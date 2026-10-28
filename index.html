@@ -943,4 +943,32 @@
     tabs.forEach(tab => {
       tab.addEventListener("click", () => {
         tabs.forEach(t => t.classList.remove("active"));
-        tab.class
+        tab.classList.add("active");
+        currentFilter = tab.dataset.filter;
+        renderMovies();
+      });
+    });
+
+    searchInput.addEventListener("input", (e) => {
+      currentSearch = e.target.value;
+      renderMovies();
+    });
+
+    document.getElementById("watchNowBtn").addEventListener("click", () => {
+      const currentMovie = movies[0];
+      heroTitle.textContent = currentMovie.title;
+      heroRating.textContent = currentMovie.rating.toFixed(1);
+      playerTitle.textContent = currentMovie.title;
+      videoPlayer.src = currentMovie.source;
+      videoPlayer.load();
+      videoPlayer.play();
+    });
+
+    document.getElementById("infoBtn").addEventListener("click", () => {
+      alert("银河守护者：一部以太空边境为背景的动作科幻作品，融合冒险、正义与救赎。");
+    });
+
+    renderMovies();
+  </script>
+</body>
+</html>
